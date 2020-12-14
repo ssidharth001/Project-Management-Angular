@@ -9,6 +9,7 @@ import { ProjectDetailComponent } from './project-tabs/project-detail/project-de
 import { ProjectResourceComponent } from './project-tabs/project-resource/project-resource.component';
 import { ProjectInvoiceComponent } from './project-tabs/project-invoice/project-invoice.component';
 import { ProjectStatusComponent } from './project-tabs/project-status/project-status.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { ProjectStatusComponent } from './project-tabs/project-status/project-st
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
