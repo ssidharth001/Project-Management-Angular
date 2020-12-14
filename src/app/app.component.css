@@ -3,6 +3,12 @@
     --secondary-color: var(rgb(246, 247, 251));
     --highlight: var(rgb(208, 209, 212));
 } */
+body {
+    color: #464648;
+    font-family: "Manrope", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
 
 .wrapper {
     display: flex;
@@ -48,4 +54,8 @@ h1 {
     color: #fff;
     background-color: #49d8a0 !important;
     box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tab-height {
+    overflow-y: scroll;
 }
