@@ -1,7 +1,6 @@
 <div class="wrapper">
-  
   <!-- Project listing -->
-  <div class="col-md-3 bg-primary" style="height: 100vh;">
+  <div class="col-md-3 bg-primary">
     <div class="col-md-12">
       <app-project-list></app-project-list>
     </div>
@@ -10,7 +9,7 @@
   <div class="col-md-9 mt-3">
     <div class="col-md-12">
       <!-- Header Section -->
-      <div class="row">
+      <div class="row" style="height: 15vh;">
         <div class="col p-3 bg-success">
           <div class="col-md-12">
 
@@ -31,19 +30,20 @@
       <!-- Project Details (Body) Section -->
       <ul class="nav nav-pills mt-2">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
+          <a class="nav-link" routerLinkActive="active" href="#">Details</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" routerLinkActive="active" href="#">Resources</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" routerLinkActive="active" href="#">Invoice</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link" routerLinkActive="active" href="#">Status</a>
         </li>
       </ul>
-      <div class="row bg-warning mt-2" style="height: 65vh;">
+
+      <div class="row bg-warning mt-2" style="height: 63vh;">
         <div class="col-md-12">
         
           <h1>PROJECT DETAILS BODYYY</h1>
@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div class="row bg-success mt-2 p-3">Footer</div>
+      <div class="row bg-success mt-2 mb-2 p-3">Footer</div>
     </div>
 
   </div>
