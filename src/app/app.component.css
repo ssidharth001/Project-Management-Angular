@@ -137,6 +137,15 @@ th {
     box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
 }
 
+.edit-btn:hover{
+    background-color: #49d8a0 !important;
+    box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.edit-btn:hover a{
+    color: #ffffff !important;
+}
+
 .tab-height {
     overflow-y: scroll;
 }

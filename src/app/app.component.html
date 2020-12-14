@@ -33,8 +33,13 @@
       </div>
 
        <!-- Project Details (Body) Section -->
-      <div class="row">
+       <div class="row d-flex justify-content-between">
         <app-project-tabs></app-project-tabs>
+        <ul class="nav nav-pills mt-2 pb-1">
+          <li class="nav-item bg-primary rounded edit-btn">
+              <a class="nav-link" routerLinkActive="active" style="cursor: pointer;">Edit</a>
+          </li>
+        </ul>
       </div>
       
       <div class="row bg-secondary mb-1" style="height:0.1px;"><hr></div>
