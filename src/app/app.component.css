@@ -23,6 +23,11 @@ body {
     margin-top: 0px !important;
 }
 
+.btn-primary {
+    background-color:#49d8a0 !important;
+    border-color: #49d8a0;
+}
+
 .bg-primary {
     background-color:#fff !important;
 }
@@ -48,6 +53,14 @@ h1 {
 
 .nav-link {
     color: #000000;
+}
+
+.table td, .table th {
+    border: 1px solid #dee2e6 !important;
+}
+
+th {
+    color: #ffffff;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
