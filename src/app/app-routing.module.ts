@@ -4,6 +4,8 @@ import { ProjectDetailComponent } from "./project-tabs/project-detail/project-de
 import { ProjectInvoiceComponent } from "./project-tabs/project-invoice/project-invoice.component";
 import { ProjectResourceComponent } from "./project-tabs/project-resource/project-resource.component";
 import { ProjectStatusComponent } from "./project-tabs/project-status/project-status.component";
+import { ProjectFormComponent } from "./shared/project-form/project-form.component";
+import { ResourceFormComponent } from "./shared/resource-form/resource-form.component";
 
 const appRoutes: Routes = [
     // { path: '', redirectTo: '/...', pathMatch: 'full'},
@@ -13,7 +15,9 @@ const appRoutes: Routes = [
     { path: 'detail', component: ProjectDetailComponent },
     { path: 'resource', component: ProjectResourceComponent },
     { path: 'invoice', component: ProjectInvoiceComponent },
-    { path: 'status', component: ProjectStatusComponent }
+    { path: 'status', component: ProjectStatusComponent },
+    { path: 'projectform', component: ProjectFormComponent },
+    { path: 'resourceform', component: ResourceFormComponent }
 ]
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],

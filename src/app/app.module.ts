@@ -10,6 +10,8 @@ import { ProjectResourceComponent } from './project-tabs/project-resource/projec
 import { ProjectInvoiceComponent } from './project-tabs/project-invoice/project-invoice.component';
 import { ProjectStatusComponent } from './project-tabs/project-status/project-status.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectFormComponent } from './shared/project-form/project-form.component';
+import { ResourceFormComponent } from './shared/resource-form/resource-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProjectDetailComponent,
     ProjectResourceComponent,
     ProjectInvoiceComponent,
-    ProjectStatusComponent
+    ProjectStatusComponent,
+    ProjectFormComponent,
+    ResourceFormComponent
   ],
   imports: [
     BrowserModule,

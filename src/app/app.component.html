@@ -7,54 +7,55 @@
     </div>
   </div>
 
-  <div class="col-md-9 bg-dark">
+  <div class="col-md-9 bg-body">
 
     <div class="col-md-12 pt-3">
       
       <!-- Header Section -->
       <div class="row mb-2">
+        
         <div class="col p-3 bg-success mr-2 rounded shadow p-3 mb-1 bg-white" style="height: 15vh;">
           <div class="col-md-12 p-3">
-
             <h1 class="text-white">PROJECTS</h1>
-
           </div>
         </div>
 
         <div class="col-2 p-3 bg-success rounded shadow p-3 mb-1 bg-white" style="height: 15vh;">
-          <div class="col-md-12">
-
-            <p class="text-white col">Welcome, Sidharth</p>
-            
-          
+          <div class="col-md-12 p-2 text-center">
+            <p class="text-white">Welcome</p>
           </div>
-
         </div>
+
       </div>
 
        <!-- Project Details (Body) Section -->
-       <div class="row d-flex justify-content-between">
+      <div class="row d-flex justify-content-between">
+
         <app-project-tabs></app-project-tabs>
         <ul class="nav nav-pills mt-2 pb-1">
-          <li class="nav-item bg-primary rounded edit-btn">
+          <li class="nav-item bg-primary rounded">
               <a class="nav-link" routerLinkActive="active" style="cursor: pointer;">Edit</a>
           </li>
         </ul>
-      </div>
-      
-      <div class="row bg-secondary mb-1" style="height:0.1px;"><hr></div>
 
+        
+      </div>
+
+
+      <div class="row bg-secondary mb-1" style="height:0.1px;"><hr></div>
+    
       <!-- Project Tabs (Body) Section -->
-      <div class="row bg-primary rounded shadow tab-height" style="height: 60vh;">
-        <div class="col-md-12">
+      <div class="row bg-primary rounded tab-height shadow" style="height: 60vh;">
+        <div class="col-md-12" [ngClass]="{'project-form': isForm === 1}">
+          
           <!-- Load project tabs -->
           <router-outlet></router-outlet>
+          
         </div>
       </div>
 
       <div class="row bg-success mt-3 p-3 rounded shadow" style="height: 9vh;"></div>
-    
-    </div>
 
+    </div>
   </div>
 </div>
