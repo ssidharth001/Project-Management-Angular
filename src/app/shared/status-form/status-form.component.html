@@ -1,0 +1,38 @@
+<form class="col-md-6 shadow"> 
+    
+    <div class="p-5">
+
+        <div class="row border-bottom">
+            <h4>Add Status</h4>
+        </div>
+
+        <div class="row form-group mt-3">
+            <label for="name">Project Name</label>
+            <input type="text" name="name" id="name" class="form-control">
+        </div>
+
+        <div class="row form-group">
+            <label for="name">Client Name</label>
+            <input type="text" name="name" id="name" class="form-control">
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-6 pl-0">
+              <label for="Start Date">Start Date</label>
+              <input type="date" name="Start Date" id="project-startDate" class="form-control">
+              <p class="project-startDate-error"></p>
+            </div>
+      
+            <div class="col-md-6 pr-0">
+              <label for="End Date">End Date</label>
+              <input type="date" name="End Date" id="project-endDate" class="form-control">
+              <p class="project-endDate-error"></p>
+            </div>
+        </div>
+
+        <div class="row justify-content-between">
+            <button class="btn btn-secondary w-40" type="button" (click)="cancelStatus()"> Cancel </button>
+            <button class="btn btn-primary w-40" type="submit"> Add </button> <!--[disabled]="!f.valid" -->
+        </div>
+    </div>
+</form>

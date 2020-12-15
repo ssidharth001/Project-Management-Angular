@@ -12,6 +12,7 @@ import { ProjectStatusComponent } from './project-tabs/project-status/project-st
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectFormComponent } from './shared/project-form/project-form.component';
 import { ResourceFormComponent } from './shared/resource-form/resource-form.component';
+import { StatusFormComponent } from './shared/status-form/status-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ResourceFormComponent } from './shared/resource-form/resource-form.comp
     ProjectInvoiceComponent,
     ProjectStatusComponent,
     ProjectFormComponent,
-    ResourceFormComponent
+    ResourceFormComponent,
+    StatusFormComponent
   ],
   imports: [
     BrowserModule,

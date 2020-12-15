@@ -6,6 +6,7 @@ import { ProjectResourceComponent } from "./project-tabs/project-resource/projec
 import { ProjectStatusComponent } from "./project-tabs/project-status/project-status.component";
 import { ProjectFormComponent } from "./shared/project-form/project-form.component";
 import { ResourceFormComponent } from "./shared/resource-form/resource-form.component";
+import { StatusFormComponent } from "./shared/status-form/status-form.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/detail', pathMatch: 'full'},
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   ]},
   {path: 'resourceform', component: ResourceFormComponent, children: [
     {path: 'edit', component: ResourceFormComponent}
-  ]}
+  ]},
+  {path: 'statusform', component: StatusFormComponent}
 ];
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],
