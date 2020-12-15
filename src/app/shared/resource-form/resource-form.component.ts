@@ -9,13 +9,24 @@ import { FormServiceService } from '../services/form-service.service';
 })
 export class ResourceFormComponent implements OnInit {
 
-  constructor(private router:Router, private formService:FormServiceService) { }
+  buttonText: string;
+  checkboxFlag: boolean;
+  showRate = false;
+
+  constructor(private router: Router, private formService: FormServiceService) { }
 
   ngOnInit(): void {
+    if (String(this.router.url).toLocaleLowerCase().includes('edit')) {
+      this.buttonText = 'Update Resource';
+    }
+    else {
+      this.buttonText = 'Add Resource';
+    }
   }
 
-  cancelResource(){
+  cancelResource() {
     this.formService.isFormStatus.next(0);
-    this.router.navigate(['/resource']);
+    this.router.navigate(['/resources']);
   }
+
 }

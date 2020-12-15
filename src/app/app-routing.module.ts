@@ -8,17 +8,18 @@ import { ProjectFormComponent } from "./shared/project-form/project-form.compone
 import { ResourceFormComponent } from "./shared/resource-form/resource-form.component";
 
 const appRoutes: Routes = [
-    // { path: '', redirectTo: '/...', pathMatch: 'full'},
-    // { path: '...', component: ...Component, children:[
-    //     { path: ':id', component: RecipeDetailComponent }
-    // ] },
-    { path: 'detail', component: ProjectDetailComponent },
-    { path: 'resource', component: ProjectResourceComponent },
-    { path: 'invoice', component: ProjectInvoiceComponent },
-    { path: 'status', component: ProjectStatusComponent },
-    { path: 'projectform', component: ProjectFormComponent },
-    { path: 'resourceform', component: ResourceFormComponent }
-]
+  {path: '', redirectTo: '/detail', pathMatch: 'full'},
+  {path: 'detail', component: ProjectDetailComponent},
+  {path: 'resource', component: ProjectResourceComponent},
+  {path: 'invoice', component: ProjectInvoiceComponent},
+  {path: 'status', component: ProjectStatusComponent},
+  {path: 'projectform', component: ProjectFormComponent, children: [
+    {path: 'edit', component: ProjectFormComponent}
+  ]},
+  {path: 'resourceform', component: ResourceFormComponent, children: [
+    {path: 'edit', component: ResourceFormComponent}
+  ]}
+];
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],
     exports: [RouterModule]
