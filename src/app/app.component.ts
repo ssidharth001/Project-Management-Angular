@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   editProjectForm() {
     this.formService.isFormStatus.next(1);
-    this.router.navigate(['/detail/edit']);
+    this.router.navigate(['/project/edit']);
   }
 
 }

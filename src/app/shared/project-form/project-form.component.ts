@@ -61,15 +61,4 @@ export class ProjectFormComponent implements OnInit {
     this.formService.isFormStatus.next(0);
     this.router.navigate(['/detail']);
   }
-    //   <div [formGroup]="myGroup">
-    //   <input formControlName="firstName">
-    // </div>
-
-    // In your class:
-
-    // this.myGroup = new FormGroup({
-    //    firstName: new FormControl()
-    // });
-
-
 }
