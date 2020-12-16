@@ -110,17 +110,17 @@ th {
 }
 
 .project-form {
+    height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     padding: 20px 30% 20px 30%;
-    background-color: white;
-    background-image: linear-gradient(to bottom, white 0%, white 100%), linear-gradient(to bottom, #49d8a1b7 0%, white 100%);
-    background-clip: content-box, padding-box;
+    background-color: #00000085;
 }
 
 .project-form form {
     max-width: 100%;
+    background-color:rgb(246, 247, 251);
 }
 
 @font-face {
