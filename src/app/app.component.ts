@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isForm: number;
   isProjectDetails = true;
   subscription: Subscription;
-  constructor(private formService: FormServiceService, private router: Router) {}
+  constructor(private formService: FormServiceService, private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.formService.isFormStatus.subscribe(
@@ -27,9 +27,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  editProjectForm(){
+  editProjectForm() {
     this.formService.isFormStatus.next(1);
-    this.router.navigate(['/projectform/edit']);
+    this.router.navigate(['/detail/edit']);
   }
 
 }

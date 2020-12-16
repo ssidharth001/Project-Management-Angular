@@ -16,7 +16,7 @@ export class ProjectListComponent implements OnInit {
 
   loadProjectForm() {
     this.formService.isFormStatus.next(1);
-    this.router.navigate(['/projectform']);
+    this.router.navigate(['/detail/add']);
   }
 
 }

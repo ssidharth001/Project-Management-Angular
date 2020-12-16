@@ -16,7 +16,7 @@ export class ProjectStatusComponent implements OnInit {
 
   addStatusForm(){
     this.formService.isFormStatus.next(1);
-    this.router.navigate(['/statusform']);
+    this.router.navigate(['/status/add']);
   }
 
 }

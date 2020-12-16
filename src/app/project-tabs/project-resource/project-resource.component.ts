@@ -16,7 +16,12 @@ export class ProjectResourceComponent implements OnInit {
 
   loadResourceForm() {
     this.formService.isFormStatus.next(1);
-    this.router.navigate(['/resourceform']);
+    this.router.navigate(['/resource/add']);
+  }
+
+  editResource(){
+    this.formService.isFormStatus.next(1);
+    this.router.navigate(['/resource/edit']);
   }
 
 }

@@ -10,17 +10,21 @@ import { StatusFormComponent } from "./shared/status-form/status-form.component"
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/detail', pathMatch: 'full'},
-  {path: 'detail', component: ProjectDetailComponent},
-  {path: 'resource', component: ProjectResourceComponent},
-  {path: 'invoice', component: ProjectInvoiceComponent},
-  {path: 'status', component: ProjectStatusComponent},
-  {path: 'projectform', component: ProjectFormComponent, children: [
+  {path: 'detail', children: [
+    {path: '', component: ProjectDetailComponent, pathMatch: 'full'},
+    {path: 'add', component: ProjectFormComponent},
     {path: 'edit', component: ProjectFormComponent}
   ]},
-  {path: 'resourceform', component: ResourceFormComponent, children: [
+  {path: 'resource', children:[
+    {path: '', component: ProjectResourceComponent, pathMatch: 'full'},
+    {path: 'add', component: ResourceFormComponent},
     {path: 'edit', component: ResourceFormComponent}
   ]},
-  {path: 'statusform', component: StatusFormComponent}
+  {path: 'invoice', component: ProjectInvoiceComponent},
+  {path: 'status', children: [
+    {path: '', component: ProjectStatusComponent, pathMatch: 'full'},
+    {path: 'add', component: StatusFormComponent}
+  ]}
 ];
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],
