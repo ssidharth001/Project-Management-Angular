@@ -47,6 +47,11 @@ hr {
     color:rgb(255, 255, 255);
 }
 
+.active-card {
+    background-color:  #49d8a0;
+    color:rgb(255, 255, 255);
+}
+
 .border-success {
     border-color: #d84981 !important;
 }

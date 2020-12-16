@@ -1,4 +1,4 @@
-<form class="col-md-6 shadow">
+<form class="col-md-6 shadow" [formGroup]="statusForm" (ngSubmit)="onSubmit()">
   <div class="p-5">
     <div class="row border-bottom">
       <h4>Add Status</h4>
@@ -6,38 +6,91 @@
 
     <div class="row form-group mt-3">
       <label for="date">Date</label>
-      <select name="date" id="date" class="form-control">
+      <select formControlName="date" id="date" class="form-control">
         <option value="7/12/2020">7/12/2020</option>
       </select>
+      <span
+        *ngIf="!statusForm.get('date').valid && statusForm.get('date').touched"
+        class="text-danger small"
+      >
+        Select a date
+      </span>
     </div>
 
     <div class="row form-group">
       <label for="resource">Resource</label>
-      <select name="resource" id="resource" class="form-control">
+      <select formControlName="resource" id="resource" class="form-control">
         <option value="Name">Name</option>
       </select>
+      <span
+        *ngIf="
+          !statusForm.get('resource').valid &&
+          statusForm.get('resource').touched
+        "
+        class="text-danger small"
+      >
+        Select a resource
+      </span>
     </div>
 
     <div class="row form-group">
       <label for="actvitytype">Activity Type</label>
-      <select name="actvitytype" id="actvitytype" class="form-control">
+      <select
+        formControlName="actvitytype"
+        id="actvitytype"
+        class="form-control"
+      >
         <option value="Coding">Coding</option>
       </select>
+      <span
+        *ngIf="
+          !statusForm.get('actvitytype').valid &&
+          statusForm.get('actvitytype').touched
+        "
+        class="text-danger small"
+      >
+        Select an activity type
+      </span>
     </div>
 
     <div class="row form-group">
       <div class="col-md-6 pl-0">
         <label for="hours">Hours</label>
-        <select name="hours" id="hours" class="col-md-12 form-control">
+        <select
+          formControlName="hours"
+          id="hours"
+          class="col-md-12 form-control"
+        >
           <option value="08">08</option>
         </select>
+        <span
+          *ngIf="
+            !statusForm.get('hours').valid && statusForm.get('hours').touched
+          "
+          class="text-danger small"
+        >
+          Select the no: hour(s)
+        </span>
       </div>
 
       <div class="col-md-6 pr-0">
         <label for="minutes">Minutes</label>
-        <select name="minutes" id="minutes" class="col-md-12 form-control">
+        <select
+          formControlName="minutes"
+          id="minutes"
+          class="col-md-12 form-control"
+        >
           <option value="08">08</option>
         </select>
+        <span
+          *ngIf="
+            !statusForm.get('minutes').valid &&
+            statusForm.get('minutes').touched
+          "
+          class="text-danger small"
+        >
+          Select the no: minutes
+        </span>
       </div>
     </div>
 

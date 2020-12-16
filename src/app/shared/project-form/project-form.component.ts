@@ -30,13 +30,16 @@ export class ProjectFormComponent implements OnInit {
       this.showSlider = false;
     }
 
+    this.onInitForm()
+  }
+
+  private onInitForm(){
     let projectName = '';
     let clientName = '';
     let startDate = '';
     let endDate = '';
     let range = '';
     let description = '';
-
 
     this.projectForm = new FormGroup({
       'projectName': new FormControl(projectName, Validators.required),
@@ -49,7 +52,7 @@ export class ProjectFormComponent implements OnInit {
   }
 
   onSubmit(){
-
+    this.onInitForm()
     console.log(this.projectForm.value)
     alert('Submitted');
   }
