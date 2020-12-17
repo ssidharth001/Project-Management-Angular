@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormServiceService } from '../services/form-service.service';
@@ -17,11 +17,13 @@ export class ProjectFormComponent implements OnInit {
   buttonText: string;
   showSlider = false;
   projectForm: FormGroup;
-  
-  constructor(private formService: FormServiceService, private router: Router) {}
+  startDateError = false;
+  endDateError = false;
+
+  constructor(private formService: FormServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    if(String(this.router.url).toLocaleLowerCase().includes('edit')){
+    if (String(this.router.url).toLocaleLowerCase().includes('edit')) {
       this.buttonText = 'Update Project';
       this.showSlider = true;
     }
@@ -30,35 +32,40 @@ export class ProjectFormComponent implements OnInit {
       this.showSlider = false;
     }
 
-    this.onInitForm()
-  }
-
-  private onInitForm(){
-    let projectName = '';
-    let clientName = '';
-    let startDate = '';
-    let endDate = '';
-    let range = '';
-    let description = '';
-
     this.projectForm = new FormGroup({
-      'projectName': new FormControl(projectName, Validators.required),
-      'clientName': new FormControl(clientName, Validators.required),
-      'startDate': new FormControl(startDate, Validators.required),
-      'endDate': new FormControl(endDate, Validators.required),
-      'range': new FormControl(range, Validators.required),
-      'description': new FormControl(description, Validators.required) 
+      'projectName': new FormControl(null, Validators.required),
+      'clientName': new FormControl(null, Validators.required),
+      'startDate': new FormControl(null, Validators.required),
+      'endDate': new FormControl(null, Validators.required),
+      'range': new FormControl(null),
+      'description': new FormControl(null, Validators.required)
     })
   }
 
-  onSubmit(){
-    this.onInitForm()
-    console.log(this.projectForm.value)
-    alert('Submitted');
+  onSubmit() {
+
+    // Date validations
+    // Start date less than current date check -> Invalid start date
+    if (new Date(this.projectForm.root.get('startDate').value) < new Date()) {
+      this.startDateError = true;
+    }
+    else this.startDateError = false;
+    // End date less than current start date check -> Valid end date
+    if (new Date(this.projectForm.root.get('endDate').value) <= new Date(this.projectForm.root.get('startDate').value)) {
+      this.endDateError = true;
+    }
+    else this.endDateError = false;
+
+    // Submit actual form
+    if ((this.projectForm.valid) && (!this.endDateError) && (!this.startDateError)) {
+      alert('Form submitted successfully');
+      this.projectForm.reset();
+    }
   }
 
-  cancelProject(){
+  cancelProject() {
     this.formService.isFormStatus.next(0);
     this.router.navigate(['/detail']);
   }
+
 }

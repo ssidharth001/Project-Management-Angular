@@ -9,7 +9,7 @@ import { FormServiceService } from 'src/app/shared/services/form-service.service
 })
 export class ProjectResourceComponent implements OnInit {
 
-  constructor(private formService:FormServiceService, private router:Router) { }
+  constructor(private formService: FormServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,7 +19,7 @@ export class ProjectResourceComponent implements OnInit {
     this.router.navigate(['/resource/add']);
   }
 
-  editResource(){
+  editResource() {
     this.formService.isFormStatus.next(1);
     this.router.navigate(['/resource/edit']);
   }

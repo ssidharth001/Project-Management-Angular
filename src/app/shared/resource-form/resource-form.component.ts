@@ -25,13 +25,13 @@ export class ResourceFormComponent implements OnInit {
       this.buttonText = 'Add Resource';
     }
 
-        // Form initialization
-        this.resourceForm = new FormGroup({
-          'resourceName': new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$'), Validators.minLength(2)]),
-          'resourceEmail': new FormControl(null, [Validators.required, Validators.email]),
-          'checkboxFlag': new FormControl(null),
-          'billableAmount': new FormControl(0, [Validators.required, Validators.pattern('^[0-9]+$')])
-        })
+    // Form initialization
+    this.resourceForm = new FormGroup({
+      'resourceName': new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$'), Validators.minLength(2)]),
+      'resourceEmail': new FormControl(null, [Validators.required, Validators.email]),
+      'checkboxFlag': new FormControl(null),
+      'billableAmount': new FormControl(0, [Validators.required, Validators.pattern('^[0-9]+$')])
+    })
   }
 
   cancelResource() {
@@ -39,7 +39,7 @@ export class ResourceFormComponent implements OnInit {
     this.router.navigate(['/resource']);
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.resourceForm);
   }
 
