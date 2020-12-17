@@ -1,54 +1,59 @@
-.flex-box {
-    display: flex;
-}
-
 .head-text-logo p {
     font-size: 120%;
     font-weight: 500;
     margin-left: 20px;
+    word-wrap: break-word;
+}
+
+hr {
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
 }
 
 .card-holder {
-    height: 70vh;
+    height: 65vh;
     padding: 0 15px;
     padding-top: 20px;
     overflow: scroll;
-    flex-direction: column;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
 .card-holder::-webkit-scrollbar {
     display: none;
-  }
+}
 
-.project-card {
-    margin-bottom: 18px;
-    padding: 10px 10px;
-    height: 100px;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    background-color: #fff;
+.card-holder .row {
+    height: 100px !important;
+    box-shadow: 3px 3px 10px #0000004d;
     border-radius: 5px;
     -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
     cursor: pointer;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.card-circle {
-    height: 70px;
-    width: 70px;
+.card-holder .row:hover {
+    background-color:  #49d8a0;
+    transition: all 0.2s ease;
 }
 
-.project-card:hover {
-    background-color: #49d8a0;
-    color: #fff;
+.card-holder .row:hover .project-text {
+    color:rgb(255, 255, 255);
+}
+
+.active-card {
+    background-color:  #49d8a0;
+    color:rgb(255, 255, 255);
+}
+
+.border-success {
+    border-color: #d84981 !important;
 }
 
 .add-project-btn {
@@ -63,4 +68,11 @@
     outline: none;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
+}
+
+.circular {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    background: linear-gradient(to top, #d84981 40%, #fff 1%) !important;
 }

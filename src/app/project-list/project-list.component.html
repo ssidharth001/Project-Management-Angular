@@ -1,14 +1,59 @@
-<div class="mt-3 head-text-logo flex-box">
-      <div class="logo"> <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="User Icon" style="height: 40px;"> </div>
-      <p>Project Management<br>System</p>
+<div class="col">
+  <div class="row mt-4 head-text-logo">
+    <img
+      src="../assets/images/user.png"
+      alt="User Icon"
+      style="height: 50px"
+      class="img-responsive mt-2"
+    />
+    <div class="col">
+      <p>
+        Project Management <br />
+        System
+      </p>
     </div>
-    <span class="add-projects-label mt-2"><button class="add-project-btn">+</button>Add Projects</span>
-    <hr id="outline">
-    <div class="card-holder flex-box" id="projectList">
-      <div class="project-card flex-box"><p>Name of the Project--progress circle</p></div>
-      <div class="project-card flex-box"><p>Name of the Project--progress circle</p></div>
-      <div class="project-card flex-box"><p>Name of the Project--progress circle</p></div>
-      <div class="project-card flex-box"><p>Name of the Project--progress circle</p></div>
-      <div class="project-card flex-box"><p>Name of the Project--progress circle</p></div>
-      <div class="project-card flex-box"><p>Name of the Project--progress circle</p></div>
-    </div>
+  </div>
+
+  <div class="row">
+    <span class="mt-2">
+      <button class="add-project-btn" (click)="loadProjectForm()">+</button>Add Projects
+    </span>
+  </div>
+</div>
+
+<hr id="outline" />
+
+<div class="col card-holder">
+  <div class="row justify-content-between mb-3 p-3 active-card">
+    <span class="project-text">PROJECT</span>
+    <span
+      class="circular border border-success d-flex align-items-center text-center"
+    >
+      <span class="m-auto inner" style="color: black !important;">30%</span>
+    </span>
+  </div>
+  <div class="row justify-content-between mb-3 p-3">
+    <span>PROJECT</span>
+    <span
+      class="circular border border-success d-flex align-items-center text-center"
+    >
+      <span class="m-auto inner">30%</span>
+    </span>
+  </div>
+  <div class="row justify-content-between mb-3 p-3">
+    <span>PROJECT</span>
+    <span
+      class="circular border border-success d-flex align-items-center text-center"
+    >
+      <span class="m-auto inner">30%</span>
+    </span>
+  </div>
+  <div class="row justify-content-between mb-3 p-3">
+    <span>PROJECT</span>
+    <span
+      class="circular border border-success d-flex align-items-center text-center"
+    >
+      <span class="m-auto inner">30%</span>
+    </span>
+  </div>
+</div>

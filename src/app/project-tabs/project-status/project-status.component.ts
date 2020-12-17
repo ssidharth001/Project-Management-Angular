@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormServiceService } from 'src/app/shared/services/form-service.service';
 
 @Component({
   selector: 'app-project-status',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectStatusComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private formService: FormServiceService) { }
 
   ngOnInit(): void {
+  }
+
+  addStatusForm(){
+    this.formService.isFormStatus.next(1);
+    this.router.navigate(['/status/add']);
   }
 
 }
