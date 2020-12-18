@@ -1,13 +1,13 @@
 <div class="row justify-content-between pr-4 pl-4 pb-2 pt-3">
   <div class="left-side-details">
     <p class="heading">Project Name</p>
-    <p class="content">Name of Project</p>
+    <p class="content">{{ project?.projectName }}</p>
 
     <p class="heading">Description</p>
-    <p class="content">Classified</p>
+    <p class="content">{{ project?.description }}</p>
 
     <p class="heading">Technologies Used</p>
-    <p class="content">Angular</p>
+    <p class="content">{{ project?.technologies }}</p>
 
     <p class="heading">Total Hours Spent</p>
     <p class="content">8:30 hour(s)</p>
@@ -17,11 +17,11 @@
     <div class="row">
       <div class="start-date-box mr-5">
         <p class="heading">Start Date</p>
-        <p class="content">2020-11-12</p>
+        <p class="content">{{ project?.startDate }}</p>
       </div>
       <div class="end-date-box mr-3">
         <p class="heading">End Date</p>
-        <p class="content">2020-11-29</p>
+        <p class="content">{{ project?.endDate }}</p>
       </div>
     </div>
 
@@ -29,10 +29,9 @@
       <span
         class="circular border border-success d-flex align-items-center text-center"
       >
-        <span class="m-auto">30%</span>
+        <span class="m-auto">{{ project?.progress }}%</span>
       </span>
     </div>
-
   </div>
 </div>
 

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../shared/services/data.service';
 import { FormServiceService } from '../shared/services/form-service.service';
 
 @Component({
@@ -9,9 +11,19 @@ import { FormServiceService } from '../shared/services/form-service.service';
 })
 export class ProjectListComponent implements OnInit {
 
-  constructor(private router: Router, private formService: FormServiceService) { }
+  projects;
+
+  constructor(private router: Router,
+    private formService: FormServiceService,
+    private dataService: DataService,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http
+      .get('http://localhost:8080/projects')
+      .subscribe(res => {
+        this.projects = res;
+      })
   }
 
   loadProjectForm() {

@@ -9,27 +9,38 @@ import { ResourceFormComponent } from "./shared/resource-form/resource-form.comp
 import { StatusFormComponent } from "./shared/status-form/status-form.component";
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/detail', pathMatch: 'full'},
-  {path: 'detail', component: ProjectDetailComponent},
-  {path: 'project', children: [
-    {path: '', redirectTo: '/project/add', pathMatch: 'full'},
-    {path: 'add', component: ProjectFormComponent},
-    {path: 'edit', component: ProjectFormComponent}
-  ]},
-  {path: 'resource', children:[
-    {path: '', component: ProjectResourceComponent, pathMatch: 'full'},
-    {path: 'add', component: ResourceFormComponent},
-    {path: 'edit', component: ResourceFormComponent}
-  ]},
-  {path: 'invoice', component: ProjectInvoiceComponent},
-  {path: 'status', children: [
-    {path: '', component: ProjectStatusComponent, pathMatch: 'full'},
-    {path: 'add', component: StatusFormComponent}
-  ]}
+  { path: '', redirectTo: '/detail', pathMatch: 'full' },
+  {
+    path: 'detail', children: [
+      { path: '', component: ProjectDetailComponent, pathMatch: 'full' },
+      { path: ':id', component: ProjectDetailComponent }
+    ]
+  },
+  {
+    path: 'project', children: [
+      { path: '', redirectTo: '/project/add', pathMatch: 'full' },
+      { path: 'add', component: ProjectFormComponent },
+      { path: 'edit', component: ProjectFormComponent }
+    ]
+  },
+  {
+    path: 'resource', children: [
+      { path: '', component: ProjectResourceComponent, pathMatch: 'full' },
+      { path: 'add', component: ResourceFormComponent },
+      { path: 'edit', component: ResourceFormComponent }
+    ]
+  },
+  { path: 'invoice', component: ProjectInvoiceComponent },
+  {
+    path: 'status', children: [
+      { path: '', component: ProjectStatusComponent, pathMatch: 'full' },
+      { path: 'add', component: StatusFormComponent }
+    ]
+  }
 ];
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 
