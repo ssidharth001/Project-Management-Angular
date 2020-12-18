@@ -9,18 +9,22 @@ import { ResourceFormComponent } from "./shared/resource-form/resource-form.comp
 import { StatusFormComponent } from "./shared/status-form/status-form.component";
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/detail', pathMatch: 'full' },
-  {
-    path: 'detail', children: [
-      { path: '', component: ProjectDetailComponent, pathMatch: 'full' },
-      { path: ':id', component: ProjectDetailComponent }
-    ]
-  },
+  { path: '', redirectTo: '/project', pathMatch: 'full' },
+  // {
+  //   path: 'detail', children: [
+  //     { path: '', component: ProjectDetailComponent, pathMatch: 'full' },
+  //     { path: ':id', component: ProjectDetailComponent }
+  //   ]
+  // },
   {
     path: 'project', children: [
-      { path: '', redirectTo: '/project/add', pathMatch: 'full' },
       { path: 'add', component: ProjectFormComponent },
-      { path: 'edit', component: ProjectFormComponent }
+      { path: 'edit', component: ProjectFormComponent },
+      {
+        path: ':id', children: [
+          { path: 'detail', component: ProjectDetailComponent }
+        ]
+      }
     ]
   },
   {

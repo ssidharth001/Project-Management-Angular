@@ -9,7 +9,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class ProjectDetailComponent implements OnInit {
 
-  project;
+  project: [{}];
 
   id: number;
 
@@ -29,13 +29,10 @@ export class ProjectDetailComponent implements OnInit {
     this.http
       .get('http://localhost:8080/projects')
       .subscribe((res: []) => {
-        console.log(res)
-
-        // console.log(res)
-        let n = res.filter((proj) => {
+        let selectedProj = res.filter((proj) => {
           return proj.projectId == this.id
         })
-        this.project = n[0];
+        this.project = selectedProj[0];
 
       })
   }
