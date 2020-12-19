@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../shared/services/data.service';
 import { FormServiceService } from '../shared/services/form-service.service';
@@ -12,6 +12,7 @@ import { FormServiceService } from '../shared/services/form-service.service';
 export class ProjectListComponent implements OnInit {
 
   projects;
+  selectedId;
 
   constructor(private router: Router,
     private formService: FormServiceService,
@@ -23,12 +24,24 @@ export class ProjectListComponent implements OnInit {
       .get('http://localhost:8080/projects')
       .subscribe(res => {
         this.projects = res;
+        this.setSelectedId();
       })
+
+    this.dataService.selectedId.subscribe(id => this.selectedId = id)
   }
 
   loadProjectForm() {
     this.formService.isFormStatus.next(1);
     this.router.navigate(['/project/add']);
+  }
+
+  passIndex(projectId) {
+    this.selectedId = projectId;
+    this.setSelectedId();
+  }
+
+  setSelectedId() {
+    this.dataService.selectedId.next(this.selectedId)
   }
 
 }

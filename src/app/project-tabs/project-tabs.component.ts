@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataService } from '../shared/services/data.service';
 
 @Component({
   selector: 'app-project-tabs',
@@ -7,13 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./project-tabs.component.css']
 })
 export class ProjectTabsComponent implements OnInit {
-  path: string;
+  path;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.path = this.router.url;
-    console.log(this.router.url);
-    console.log(this.route.snapshot.url)
+    this.dataService.selectedId.subscribe(id => this.path = `/project/${id}`);
+    console.log(this.path);
+
   }
 }

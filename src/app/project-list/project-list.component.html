@@ -30,7 +30,7 @@
     *ngFor="let project of projects"
     routerLinkActive="active"
     [routerLink]="'project/' + project.projectId + '/detail'"
-    [projectId]=""
+    (click)="passIndex(project.projectId)"
   >
     <span>{{ project.projectName }}</span>
     <span
