@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectFormComponent } from './shared/project-form/project-form.component';
 import { ResourceFormComponent } from './shared/resource-form/resource-form.component';
 import { StatusFormComponent } from './shared/status-form/status-form.component';
+import { JsonParsePipe } from './shared/json-parse.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StatusFormComponent } from './shared/status-form/status-form.component'
     ProjectStatusComponent,
     ProjectFormComponent,
     ResourceFormComponent,
-    StatusFormComponent
+    StatusFormComponent,
+    JsonParsePipe
   ],
   imports: [
     BrowserModule,
