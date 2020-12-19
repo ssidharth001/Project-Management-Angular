@@ -29,7 +29,7 @@
     class="row justify-content-between mb-3 p-3"
     *ngFor="let project of projects"
     routerLinkActive="active"
-    [routerLink]="'project/' + project.projectId + '/detail'"
+    [routerLink]="'project/' + project.projectId"
     (click)="passIndex(project.projectId)"
   >
     <span>{{ project.projectName }}</span>
