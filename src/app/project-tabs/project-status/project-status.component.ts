@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormServiceService } from 'src/app/shared/services/form-service.service';
 
 @Component({
@@ -9,14 +9,14 @@ import { FormServiceService } from 'src/app/shared/services/form-service.service
 })
 export class ProjectStatusComponent implements OnInit {
 
-  constructor(private router:Router, private formService: FormServiceService) { }
+  constructor(private router: Router, private formService: FormServiceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
-  addStatusForm(){
+  addStatusForm() {
     this.formService.isFormStatus.next(1);
-    this.router.navigate(['/status/add']);
+    this.router.navigate(['add'], { relativeTo: this.route });
   }
 
 }
