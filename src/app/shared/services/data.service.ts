@@ -9,6 +9,8 @@ export class DataService {
 
     selectedId = new Subject<number>()
 
+    selectedProject = new Subject()
+
     constructor(private http: HttpClient) { }
 
     fetchData() {

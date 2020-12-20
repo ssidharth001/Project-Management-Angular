@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormServiceService } from '../services/form-service.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ResourceFormComponent implements OnInit {
   showRate = false;
   resourceForm: FormGroup
 
-  constructor(private router: Router, private formService: FormServiceService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private formService: FormServiceService) { }
 
   ngOnInit(): void {
     if (String(this.router.url).toLocaleLowerCase().includes('edit')) {
@@ -36,7 +36,7 @@ export class ResourceFormComponent implements OnInit {
 
   cancelResource() {
     this.formService.isFormStatus.next(0);
-    this.router.navigate(['/resource']);
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   onSubmit() {

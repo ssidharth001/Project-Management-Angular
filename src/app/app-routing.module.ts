@@ -13,11 +13,11 @@ const appRoutes: Routes = [
   {
     path: 'project', children: [
       { path: 'add', component: ProjectFormComponent },
-      { path: 'edit', component: ProjectFormComponent },
       {
         path: ':id', children: [
           { path: '', redirectTo: 'detail', pathMatch: 'full' },
           { path: 'detail', component: ProjectDetailComponent },
+          { path: 'edit', component: ProjectFormComponent },
           {
             path: 'resource', children: [
               { path: '', component: ProjectResourceComponent, pathMatch: 'full' },

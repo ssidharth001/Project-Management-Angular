@@ -33,7 +33,7 @@ export class ProjectDetailComponent implements OnInit {
           return proj.projectId == this.id
         })
         this.project = selectedProj[0];
-
+        this.dataService.selectedProject.next(selectedProj[0]);
       })
   }
 }

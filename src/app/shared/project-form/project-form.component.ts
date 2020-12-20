@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { DataService } from '../services/data.service';
 import { FormServiceService } from '../services/form-service.service';
-
+import { tap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-project-form',
@@ -19,8 +20,14 @@ export class ProjectFormComponent implements OnInit {
   projectForm: FormGroup;
   startDateError = false;
   endDateError = false;
+  selectedProject;
 
-  constructor(private formService: FormServiceService, private router: Router) { }
+  constructor(
+    private formService: FormServiceService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private dataService: DataService) { }
+
 
   ngOnInit(): void {
     if (String(this.router.url).toLocaleLowerCase().includes('edit')) {
@@ -32,13 +39,23 @@ export class ProjectFormComponent implements OnInit {
       this.showSlider = false;
     }
 
+
+
     this.projectForm = new FormGroup({
-      'projectName': new FormControl(null, Validators.required),
+      'projectName': new FormControl(this.selectedProject ? this.selectedProject.projectName : null, Validators.required),
       'clientName': new FormControl(null, Validators.required),
       'startDate': new FormControl(null, Validators.required),
       'endDate': new FormControl(null, Validators.required),
-      'range': new FormControl(null),
+      'progress': new FormControl(null),
       'description': new FormControl(null, Validators.required)
+    })
+
+    this.dataService.selectedProject.subscribe(project => { this.selectedProject = project; this.fillForm(); })
+  }
+
+  fillForm() {
+    this.projectForm.patchValue({
+      'projectName': 'name'
     })
   }
 
@@ -58,14 +75,14 @@ export class ProjectFormComponent implements OnInit {
 
     // Submit actual form
     if ((this.projectForm.valid) && (!this.endDateError) && (!this.startDateError)) {
-      alert('Form submitted successfully');
+      console.log(this.projectForm.value)
       this.projectForm.reset();
     }
   }
 
   cancelProject() {
     this.formService.isFormStatus.next(0);
-    this.router.navigate(['/detail']);
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
 }
