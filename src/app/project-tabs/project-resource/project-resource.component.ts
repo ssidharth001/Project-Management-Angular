@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataService } from 'src/app/shared/services/data.service';
 import { FormServiceService } from 'src/app/shared/services/form-service.service';
 
 @Component({
@@ -9,9 +11,43 @@ import { FormServiceService } from 'src/app/shared/services/form-service.service
 })
 export class ProjectResourceComponent implements OnInit {
 
-  constructor(private formService: FormServiceService, private router: Router, private route: ActivatedRoute) { }
+  resources;
+  selectedId;
+  selectedProjRes = [{}];
+  newResources = [{}];
+
+  constructor(private formService: FormServiceService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private dataService: DataService,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.selectedId = +params['id'];
+        this.fetchResource()
+        console.log(this.selectedId)
+      });
+
+    this.dataService.resources.subscribe(res => {
+      // this.fetchResource()
+    })
+    console.log(this.newResources)
+
+  }
+
+  fetchResource() {
+    this.http
+      .get('http://localhost:8080/resources')
+      .subscribe((res: []) => {
+        this.resources = res;
+        let selectedRes = res.filter((resource) => {
+          return resource.project_id == this.selectedId;
+        })
+        this.selectedProjRes = selectedRes;
+        console.log(this.selectedProjRes)
+      })
   }
 
   loadResourceForm() {

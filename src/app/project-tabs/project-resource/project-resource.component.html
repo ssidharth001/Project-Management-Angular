@@ -15,30 +15,14 @@
 
   <!-- Dynamically populate table body -->
   <tbody>
-    <tr>
-      <td>Name</td>
+    <tr *ngFor="let resource of selectedProjRes">
+      <td>{{ resource.name }}</td>
       <td>Email Address</td>
       <td>True</td>
       <td>100</td>
       <td>
         <button class="btn btn-primary" (click)="editResource()">Ed</button>
       </td>
-      <td>Del</td>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td>Email Address</td>
-      <td>True</td>
-      <td>100</td>
-      <td>Ed</td>
-      <td>Del</td>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td>Email Address</td>
-      <td>True</td>
-      <td>100</td>
-      <td>Ed</td>
       <td>Del</td>
     </tr>
   </tbody>

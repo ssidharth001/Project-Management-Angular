@@ -20,7 +20,10 @@ export class ProjectFormComponent implements OnInit {
   projectForm: FormGroup;
   startDateError = false;
   endDateError = false;
+  projects;
   selectedProject;
+  projectName;
+
 
   constructor(
     private formService: FormServiceService,
@@ -39,10 +42,10 @@ export class ProjectFormComponent implements OnInit {
       this.showSlider = false;
     }
 
-
+    this.dataService.projects.subscribe(projects => this.projects = projects);
 
     this.projectForm = new FormGroup({
-      'projectName': new FormControl(this.selectedProject ? this.selectedProject.projectName : null, Validators.required),
+      'projectName': new FormControl(null, Validators.required),
       'clientName': new FormControl(null, Validators.required),
       'startDate': new FormControl(null, Validators.required),
       'endDate': new FormControl(null, Validators.required),
@@ -54,9 +57,8 @@ export class ProjectFormComponent implements OnInit {
   }
 
   fillForm() {
-    this.projectForm.patchValue({
-      'projectName': 'name'
-    })
+    console.log('entered fillForm');
+    // this.projectForm.patchValue({ ['projectName']: 'value' });
   }
 
   onSubmit() {
@@ -75,7 +77,10 @@ export class ProjectFormComponent implements OnInit {
 
     // Submit actual form
     if ((this.projectForm.valid) && (!this.endDateError) && (!this.startDateError)) {
-      console.log(this.projectForm.value)
+      if (this.buttonText === 'Create Project') {
+        console.log(this.projectForm.value)
+        this.projects.push(this.projectForm.value);
+      }
       this.projectForm.reset();
     }
   }

@@ -34,6 +34,7 @@ export class ProjectDetailComponent implements OnInit {
         })
         this.project = selectedProj[0];
         this.dataService.selectedProject.next(selectedProj[0]);
+        this.dataService.projects.next(res);
       })
   }
 }

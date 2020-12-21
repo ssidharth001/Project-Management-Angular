@@ -7,9 +7,15 @@ import { Subject } from 'rxjs';
 })
 export class DataService {
 
-    selectedId = new Subject<number>()
+    selectedId = new Subject<number>();
 
-    selectedProject = new Subject()
+    selectedProject = new Subject();
+
+    projects = new Subject();
+
+    resources = new Subject();
+
+    selectedResource = new Subject();
 
     constructor(private http: HttpClient) { }
 
