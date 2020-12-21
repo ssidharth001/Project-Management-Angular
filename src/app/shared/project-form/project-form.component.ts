@@ -58,7 +58,7 @@ export class ProjectFormComponent implements OnInit {
 
   fillForm() {
     console.log('entered fillForm');
-    // this.projectForm.patchValue({ ['projectName']: 'value' });
+    this.projectForm.patchValue({ ['projectName']: 'value' });
   }
 
   onSubmit() {
