@@ -27,7 +27,8 @@ export class ProjectListComponent implements OnInit {
         this.setSelectedId();
       })
 
-    this.dataService.selectedId.subscribe(id => this.selectedId = id)
+    this.dataService.selectedId.subscribe(id => this.selectedId = id);
+    this.dataService.projects.subscribe(projects => this.projects = projects)
   }
 
   loadProjectForm() {
