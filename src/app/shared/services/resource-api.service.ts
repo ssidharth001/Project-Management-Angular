@@ -4,20 +4,19 @@ import { map } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http';
 import { ProjectsModel } from './projects-model.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
-
-export class ProjectApiService {
+export class ResourceApiService {
 
   reloadComponent = new Subject<number>();
-  selectedProjectIndex = new Subject<number>();
 
   constructor(private http: HttpClient) { }
 
-  storeProjectData(data: ProjectsModel) {
+  storeResourceData(data: ProjectsModel) {
     this.http
-      .post('https://project-dashboard-angular-default-rtdb.firebaseio.com/projects.json',
+      .post('https://project-dashboard-angular-default-rtdb.firebaseio.com/resources.json',
         data)
       .subscribe(responseData => {
         this.reloadComponent.next(1);
@@ -25,9 +24,9 @@ export class ProjectApiService {
       })
   }
 
-  updateProjectData(data: ProjectsModel[]) {
+  updateResourceData(data: ProjectsModel[]) {
     this.http
-      .put('https://project-dashboard-angular-default-rtdb.firebaseio.com/projects.json',
+      .put('https://project-dashboard-angular-default-rtdb.firebaseio.com/resources.json',
         data)
       .subscribe(responseData => {
         this.reloadComponent.next(1);
@@ -35,9 +34,9 @@ export class ProjectApiService {
       })
   }
 
-  fetchProjects() {
+  fetchResources() {
     return this.http
-      .get('https://project-dashboard-angular-default-rtdb.firebaseio.com/projects.json')
+      .get('https://project-dashboard-angular-default-rtdb.firebaseio.com/resources.json')
       .pipe(
         map(responseData => {
           const projectsArray: ProjectsModel[] = []

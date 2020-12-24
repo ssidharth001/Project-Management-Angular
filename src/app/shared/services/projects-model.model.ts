@@ -1,11 +1,12 @@
 export class ProjectsModel {
     constructor(
-        public projectName: string,
-        public clientName: string,
-        public startDate: string,
+        public projectName:string, 
+        public clientName: string, 
+        public startDate: string, 
         public endDate: string,
-        public progress: number,
+        public range : number,
         public description: string,
-        public technologies?: [],
-        public projectId?: string) { }
+        public technologies? : [], 
+        public projectID? : string)
+    {}
 }

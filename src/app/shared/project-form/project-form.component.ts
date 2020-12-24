@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormServiceService } from '../services/form-service.service';
@@ -20,19 +20,19 @@ export class ProjectFormComponent implements OnInit {
   buttonText: string;
   showSlider = false;
   projectForm: FormGroup;
-  startDateError = false;
+  startDateError =  false;
   endDateError = false;
   previousPath: string;
   totalProjectCount: number;
   projectDetails: ProjectsModel;
   projectList: ProjectsModel[];
-
+  
   constructor(
-    private formService: FormServiceService,
-    private router: Router,
+    private formService: FormServiceService, 
+    private router: Router, 
     private route: ActivatedRoute,
     private path: PathRoutingService,
-    private projectApi: ProjectApiService) { }
+    private projectApi: ProjectApiService) {}
 
   ngOnInit(): void {
 
@@ -41,11 +41,11 @@ export class ProjectFormComponent implements OnInit {
       'clientName': new FormControl(null, Validators.required),
       'startDate': new FormControl(null, Validators.required),
       'endDate': new FormControl(null, Validators.required),
-      'progress': new FormControl(0),
-      'description': new FormControl(null, Validators.required)
+      'range': new FormControl(0),
+      'description': new FormControl(null, Validators.required) 
     })
 
-    if (String(this.router.url).toLocaleLowerCase().includes('edit')) {
+    if(String(this.router.url).toLocaleLowerCase().includes('edit')) {
       this.buttonText = 'Update Project';
       this.showSlider = true;
 
@@ -60,10 +60,10 @@ export class ProjectFormComponent implements OnInit {
             'clientName': this.projectDetails.clientName,
             'startDate': this.projectDetails.startDate,
             'endDate': this.projectDetails.endDate,
-            'progress': this.projectDetails.progress,
+            'range': this.projectDetails.range,
             'description': this.projectDetails.description
           });
-        });
+      });
     }
     else {
       this.buttonText = 'Create Project';
@@ -73,69 +73,44 @@ export class ProjectFormComponent implements OnInit {
     this.path.currentPath.subscribe(
       storedPath => {
         this.previousPath = storedPath;
-      })
+    })
   }
 
-  onSubmit() {
+  onSubmit(){
 
-    if (this.buttonText == 'Create Project') {
-      const projectDetails = {
-        projectName: this.projectForm.value.projectName,
-        clientName: this.projectForm.value.clientName,
-        projectManager: 'None',
-        projectStatus: 'Open',
-        startDate: this.projectForm.value.startDate,
-        endDate: this.projectForm.value.endDate,
-        progress: this.projectForm.value.progress || 0,
-        technologies: ['JS'],
-        description: this.projectForm.value.description
-      }
-
+    if(this.buttonText == 'Create Project') {
       // Start date less than current date check -> Invalid start date
-      if (new Date(this.projectForm.root.get('startDate').value) < new Date()) {
+      if(new Date(this.projectForm.root.get('startDate').value) < new Date()) {
         this.startDateError = true;
       }
       else this.startDateError = false;
       // End date less than current start date check -> Valid end date
-      if (new Date(this.projectForm.root.get('endDate').value) <= new Date(this.projectForm.root.get('startDate').value)) {
+      if(new Date(this.projectForm.root.get('endDate').value) <= new Date(this.projectForm.root.get('startDate').value)) {
         this.endDateError = true;
       }
       else this.endDateError = false;
-
+  
       // Submit actual form
-      if ((this.projectForm.valid) && (!this.endDateError) && (!this.startDateError)) {
+      if((this.projectForm.valid) && (!this.endDateError) && (!this.startDateError)) {
         // Send http 
-        this.projectApi.storeProjectData(projectDetails);
+        this.projectApi.storeProjectData(this.projectForm.value);
       }
     }
     else {
-      const projectDetails = {
-        projectName: this.projectForm.value.projectName,
-        clientName: this.projectForm.value.clientName,
-        projectManager: 'None',
-        projectStatus: 'Open',
-        startDate: this.projectForm.value.startDate,
-        endDate: this.projectForm.value.endDate,
-        progress: this.projectForm.value.progress || 0,
-        technologies: ['JS'],
-        description: this.projectForm.value.description
-      }
       // Overwrite already present data
-      console.log(projectDetails);
-
-      this.projectList[this.router.url.split('/')[2]] = Object.assign(projectDetails);
-      this.projectApi.updateProjectData(this.projectList.reverse(), +this.router.url.split('/')[2]);
+      this.projectList[this.router.url.split('/')[2]] = Object.assign(this.projectForm.value);
+      this.projectApi.updateProjectData(this.projectList.reverse());
     }
 
     this.projectForm.reset();
     this.formService.isFormStatus.next(0);
     this.router.navigate([`/projects/0/details`]);
-
+   
   }
 
-  cancelProject() {
+  cancelProject(){
     this.formService.isFormStatus.next(0);
-    this.buttonText == 'Update Project' ? this.router.navigate(['../'], { relativeTo: this.route }) : this.router.navigateByUrl(this.previousPath);
+    this.buttonText == 'Update Project' ? this.router.navigate(['../'], {relativeTo: this.route}): this.router.navigateByUrl(this.previousPath);
   }
 
 }

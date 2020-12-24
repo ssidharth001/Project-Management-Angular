@@ -1,8 +1,4 @@
-<form
-  [formGroup]="projectForm"
-  (ngSubmit)="onSubmit()"
-  class="col-md-6 shadow align-self-center"
->
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="col-md-6 shadow align-self-center">
   <div class="p-4">
     <div class="row border-bottom">
       <h4>{{ buttonText }}</h4>
@@ -18,8 +14,8 @@
       />
       <span
         *ngIf="
-          !projectForm.get('projectName').valid &&
-          projectForm.get('projectName').touched
+          (!projectForm.get('projectName').valid &&
+          projectForm.get('projectName').touched)
         "
         class="text-danger small"
       >
@@ -37,8 +33,8 @@
       />
       <span
         *ngIf="
-          !projectForm.get('clientName').valid &&
-          projectForm.get('clientName').touched
+          (!projectForm.get('clientName').valid &&
+          projectForm.get('clientName').touched)
         "
         class="text-danger small"
       >
@@ -55,13 +51,12 @@
           id="project-startDate"
           value="12-16-2020"
           class="form-control"
-          [ngClass]="{ invalid: startDateError == true }"
+          [ngClass]="{'invalid': startDateError == true}"
         />
         <span
           *ngIf="
             (!projectForm.get('startDate').valid &&
-              projectForm.get('startDate').touched) ||
-            startDateError
+            projectForm.get('startDate').touched) || startDateError
           "
           class="text-danger small"
         >
@@ -76,13 +71,12 @@
           formControlName="endDate"
           id="project-endDate"
           class="form-control"
-          [ngClass]="{ invalid: endDateError == true }"
+          [ngClass]="{'invalid': endDateError == true}"
         />
         <span
           *ngIf="
             (!projectForm.get('endDate').valid &&
-              projectForm.get('endDate').touched) ||
-            endDateError
+            projectForm.get('endDate').touched) || endDateError
           "
           class="text-danger small"
         >
@@ -98,7 +92,7 @@
       <label for="name">Percentage Completed</label>
       <input
         type="range"
-        formControlName="progress"
+        formControlName="range"
         min="1"
         max="100"
         class="w-93 slider"
@@ -116,8 +110,8 @@
       ></textarea>
       <span
         *ngIf="
-          !projectForm.get('description').valid &&
-          projectForm.get('description').touched
+          (!projectForm.get('description').valid &&
+          projectForm.get('description').touched)
         "
         class="text-danger small"
       >
@@ -133,11 +127,7 @@
       >
         Cancel
       </button>
-      <button
-        class="btn btn-primary w-40"
-        type="submit"
-        [disabled]="!projectForm.valid"
-      >
+      <button class="btn btn-primary w-40" type="submit" [disabled]="!projectForm.valid">
         {{ buttonText }}
       </button>
     </div>

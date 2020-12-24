@@ -15,19 +15,19 @@ export class ProjectListComponent implements OnInit {
   public projects: ProjectsModel[] = [];
   selectedId = 0;
 
-  constructor(private router: Router,
-    private formService: FormServiceService,
+  constructor(private router: Router, 
+    private formService: FormServiceService, 
     private path: PathRoutingService,
     private projectApi: ProjectApiService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.projectApi.fetchProjects().subscribe(
       data => {
         this.projects = data.reverse()
         this.projectApi.selectedProjectIndex.subscribe(
           index => this.selectedId = index
-        )
-      });
+      )
+    });
 
     // Reload component : Add new project
     this.projectApi.reloadComponent.subscribe(

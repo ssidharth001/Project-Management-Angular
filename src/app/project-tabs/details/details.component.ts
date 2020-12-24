@@ -17,16 +17,18 @@ export class DetailsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.projectApi.selectedProjectIndex.subscribe(
+      index => this.selectedProjectDetails = this.projects[index]
+    )
 
     this.projectApi.fetchProjects().subscribe(
       data => {
         this.projects = JSON.parse(JSON.stringify(data.reverse()))
-        this.selectedProjectDetails = this.projects.filter((project) => project.projectId == this.router.url.split('/')[2])[0] // Initial setup
-        console.log(this.selectedProjectDetails);
-
+        this.selectedProjectDetails = this.projects[this.router.url.split('/')[2]] // Initial setup
       });
 
     // Reload component : Add new project
+
     this.projectApi.reloadComponent.subscribe(
       response => response == 1 ? this.ngOnInit() : 0
     )
