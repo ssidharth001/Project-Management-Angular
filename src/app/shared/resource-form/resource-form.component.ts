@@ -101,6 +101,7 @@ export class ResourceFormComponent implements OnInit {
       this.router.navigate(['../../'], { relativeTo: this.route });
     }
     this.resourceForm.reset();
+    this.formService.isFormStatus.next(0);
   }
 
 }
