@@ -1,32 +1,41 @@
 <div class="col">
-
-    <div class="row mt-4 mb-4 head-text-logo">
-        <img src="../assets/images/user.png" alt="User Icon" style="height: 50px;" class="img-responsive mt-2">
-        <div class="col">
-            <p>Project Management <br> System</p>
-        </div>
+  <div class="row mt-4 mb-4 head-text-logo">
+    <img
+      src="../assets/images/user.png"
+      alt="User Icon"
+      style="height: 50px"
+      class="img-responsive mt-2"
+    />
+    <div class="col">
+      <p>
+        Project Management <br />
+        System
+      </p>
     </div>
-    
-    <div class="row add">
-        <span class="mt-2"><button class="btn btn-primary mr-2" (click)="loadProjectForm()">+</button>Add Projects</span>
-    </div>
+  </div>
 
+  <div class="row add">
+    <span class="mt-2"
+      ><button class="btn btn-primary mr-2" (click)="loadProjectForm()">
+        +</button
+      >Add Projects</span
+    >
+  </div>
 </div>
 
-<hr>
+<hr />
 
 <div class="col card-holder">
-
-    <div class="row justify-content-between mb-3 p-3" 
-    *ngFor="let project of projects; let i = index" 
-    [ngClass]="{'select': selectedId == i}" 
-    [id]="i"
-    (click)="getProjectIndex(i)"
-    >
-        <span>{{project.projectName}}</span>
-        <span class="circular shadow-sm d-flex align-items-center text-center">
-            <span class="m-auto inner shadow">{{project.range}}%</span>
-        </span>
-    </div>
-
+  <div
+    class="row justify-content-between mb-3 p-3"
+    *ngFor="let project of projects; let i = index"
+    [ngClass]="{ select: selectedId == project.projectID }"
+    [id]="project.projectID"
+    (click)="getProjectIndex(project.projectID)"
+  >
+    <span>{{ project.projectName }}</span>
+    <span class="circular shadow-sm d-flex align-items-center text-center">
+      <span class="m-auto inner shadow">{{ project.range }}%</span>
+    </span>
+  </div>
 </div>

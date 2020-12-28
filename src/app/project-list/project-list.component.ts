@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FormServiceService } from '../shared/services/form-service.service';
 import { PathRoutingService } from '../shared/services/path-routing.service';
 import { ProjectApiService } from '../shared/services/project-api.service';
@@ -10,24 +11,28 @@ import { ProjectsModel } from '../shared/services/projects-model.model';
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.css']
 })
-export class ProjectListComponent implements OnInit {
+export class ProjectListComponent implements OnInit, OnDestroy {
 
   public projects: ProjectsModel[] = [];
   selectedId = 0;
 
-  constructor(private router: Router, 
-    private formService: FormServiceService, 
+  projectsSubscription: Subscription;
+  reloadComponentSubjectSubscription: Subscription;
+
+  constructor(private router: Router,
+    private formService: FormServiceService,
     private path: PathRoutingService,
     private projectApi: ProjectApiService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.projectApi.fetchProjects().subscribe(
       data => {
         this.projects = data.reverse()
-        this.projectApi.selectedProjectIndex.subscribe(
+        // Highlight selected
+        this.projectApi.selectedProjectId.subscribe(
           index => this.selectedId = index
-      )
-    });
+        )
+      });
 
     // Reload component : Add new project
     this.projectApi.reloadComponent.subscribe(
@@ -41,9 +46,14 @@ export class ProjectListComponent implements OnInit {
     this.router.navigateByUrl('/projects/add');
   }
 
-  getProjectIndex(index: number) {
-    this.projectApi.selectedProjectIndex.next(index);
-    this.router.navigateByUrl(`projects/${index}/details`);
+  getProjectIndex(projectId: number) {
+    this.projectApi.selectedProjectId.next(projectId); // for project details fetch
+    this.router.navigateByUrl(`projects/${projectId}/details`);
+  }
+
+  ngOnDestroy() {
+    this.projectsSubscription.unsubscribe();
+    this.reloadComponentSubjectSubscription.unsubscribe();
   }
 
 }

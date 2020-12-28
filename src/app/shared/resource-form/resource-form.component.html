@@ -27,8 +27,7 @@
           This name is invalid
         </span>
         <span *ngIf="resourceForm.get('resourceName').errors?.minlength">
-          (Hint: Only alphabets and spaces allowed. Minimum length is
-          2)
+          (Hint: Only alphabets and spaces allowed. Minimum length is 2)
         </span>
         <span *ngIf="resourceForm.get('resourceName').errors['required']">
           This field is required!
@@ -70,8 +69,7 @@
       />
       <span
         *ngIf="
-          !resourceForm.get('role').valid &&
-          resourceForm.get('role').touched
+          !resourceForm.get('role').valid && resourceForm.get('role').touched
         "
         class="help-block text-danger small"
       >
@@ -88,16 +86,17 @@
       <input
         class="form-check-input"
         type="checkbox"
-        formControlName="checkboxFlag"
-        [(ngModel)]="checkboxFlag"
+        formControlName="billable"
+        [(ngModel)]="billable"
       />
       <label class="form-check-label" for="billable"> Billable </label>
     </div>
 
-    <div class="row form-group" *ngIf="checkboxFlag">
+    <div class="row form-group" *ngIf="billable">
       <label for="rateperhour">Rate Per Hour</label>
       <input
         id="rateperhour"
+        type="number"
         rows="5"
         class="form-control"
         formControlName="billableAmount"
@@ -108,7 +107,8 @@
           resourceForm.get('billableAmount').touched
         "
         class="help-block text-danger small"
-      > This field is required!
+      >
+        This field is required!
       </span>
     </div>
 
@@ -120,7 +120,11 @@
       >
         Cancel
       </button>
-      <button class="btn btn-primary w-40" type="submit" [disabled]="!resourceForm.valid">
+      <button
+        class="btn btn-primary w-40"
+        type="submit"
+        [disabled]="!resourceForm.valid"
+      >
         {{ buttonText }}
       </button>
     </div>
