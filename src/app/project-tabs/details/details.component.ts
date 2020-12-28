@@ -11,26 +11,35 @@ import { ProjectsModel } from 'src/app/shared/services/projects-model.model';
 export class DetailsComponent implements OnInit {
 
   public projects: ProjectsModel[] = [];
-  selectedProjectDetails: ProjectsModel;
+  selectedProjectDetails:ProjectsModel;
+  selectedId = 0;
+  loading: boolean;
 
   constructor(private projectApi: ProjectApiService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.projectApi.selectedProjectIndex.subscribe(
-      index => this.selectedProjectDetails = this.projects[index]
-    )
+
+    this.loading = true;
 
     this.projectApi.fetchProjects().subscribe(
       data => {
         this.projects = JSON.parse(JSON.stringify(data.reverse()))
         this.selectedProjectDetails = this.projects[this.router.url.split('/')[2]] // Initial setup
-      });
+        this.loading = false;
+    });
 
     // Reload component : Add new project
-
     this.projectApi.reloadComponent.subscribe(
       response => response == 1 ? this.ngOnInit() : 0
+    )
+
+    // Project switch
+    this.projectApi.selectedProjectIndex.subscribe(
+      index => {
+        this.selectedProjectDetails = this.projects[index];
+        this.loading = false;
+      }
     )
   }
 }

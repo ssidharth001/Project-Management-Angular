@@ -11,7 +11,7 @@ export class ResourcesComponent implements OnInit {
 
   isDelete = false;
 
-  constructor(private router: Router, private formService: FormServiceService, private route:ActivatedRoute) { }
+  constructor(private router: Router, private formService: FormServiceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -19,10 +19,10 @@ export class ResourcesComponent implements OnInit {
   loadResourceForm() {
     this.isDelete = false;
     this.formService.isFormStatus.next(1);
-    this.router.navigateByUrl('/resources/add');
+    this.router.navigate([`${this.router.url}` + '/add']);
   }
 
-  editResource(){
+  editResource() {
     this.isDelete = false;
     this.formService.isFormStatus.next(1);
     this.router.navigateByUrl('/resources/edit');
@@ -33,7 +33,7 @@ export class ResourcesComponent implements OnInit {
     this.formService.isFormStatus.next(1);
   }
 
-  cancelDeleteResource(){
+  cancelDeleteResource() {
     this.isDelete = false;
     this.formService.isFormStatus.next(0);
     this.router.navigateByUrl('/resources');
