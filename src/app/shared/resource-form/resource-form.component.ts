@@ -87,7 +87,12 @@ export class ResourceFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const selectedResource = JSON.parse(this.router.url.split('/')[5]);
+    if (String(this.router.url).toLocaleLowerCase().includes('edit')) {
+      this.buttonText = 'Update Resource';
+    }
+    else {
+      this.buttonText = 'Add Resource';
+    }
     if (this.buttonText == 'Add Resource') {
       const resourceData = Object.assign({}, this.resourceForm.value, { 'resourceId': this.resourceList.length }, { 'projectId': JSON.parse(this.router.url.split('/')[2]) });
       console.log(resourceData);
@@ -95,6 +100,9 @@ export class ResourceFormComponent implements OnInit {
       this.router.navigate(['../../'], { relativeTo: this.route });
     }
     else {
+      const selectedResource = JSON.parse(this.router.url.split('/')[5]);
+      console.log(selectedResource);
+
       this.resourceList[selectedResource] = Object.assign({}, this.resourceForm.value, { 'resourceId': selectedResource }, { 'projectId': JSON.parse(this.router.url.split('/')[2]) });
       console.log(this.resourceList)
       this.projectApi.updateResourceData(this.resourceList);

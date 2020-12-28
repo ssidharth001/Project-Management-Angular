@@ -13,6 +13,7 @@ export class ResourcesComponent implements OnInit {
 
   resources: ResourcesModel[];
   selectedProjectResources: ResourcesModel[];
+  updatedResources: ResourcesModel[];
   isDelete = false;
 
   constructor(private router: Router, private formService: FormServiceService, private route: ActivatedRoute, private projectApi: ProjectApiService) { }
@@ -46,9 +47,19 @@ export class ResourcesComponent implements OnInit {
   }
 
   deleteResource(resourceId) {
-    this.isDelete = true;
-    this.formService.isFormStatus.next(1);
-    this.formService.selectedResource.next(resourceId);
+    // this.isDelete = true;
+    console.log(resourceId)
+    this.projectApi.fetchResources().subscribe(
+      data => {
+        this.resources = JSON.parse(JSON.stringify(data))
+        this.updatedResources = this.resources.filter((resource) => resource.resourceId !== resourceId)
+        this.projectApi.updateResourceData(this.updatedResources)
+        console.log(this.updatedResources);
+      });
+
+
+    // this.formService.isFormStatus.next(1);
+    // this.formService.selectedResource.next(resourceId);
   }
 
   cancelDeleteResource() {
