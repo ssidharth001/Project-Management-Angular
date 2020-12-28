@@ -38,20 +38,22 @@ export class ResourcesComponent implements OnInit {
     this.router.navigate([`${this.router.url}` + '/add']);
   }
 
-  editResource() {
+  editResource(resourceId) {
     this.isDelete = false;
     this.formService.isFormStatus.next(1);
-    this.router.navigateByUrl('/resources/edit');
+    this.formService.selectedResource.next(resourceId);
+    this.router.navigate([`${this.router.url}` + '/edit/' + `${resourceId}`]);
   }
 
-  deleteResource() {
+  deleteResource(resourceId) {
     this.isDelete = true;
     this.formService.isFormStatus.next(1);
+    this.formService.selectedResource.next(resourceId);
   }
 
   cancelDeleteResource() {
     this.isDelete = false;
     this.formService.isFormStatus.next(0);
-    this.router.navigateByUrl('/resources');
+    this.router.navigate(['../']);
   }
 }

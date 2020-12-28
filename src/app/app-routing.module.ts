@@ -10,27 +10,37 @@ import { StatusFormComponent } from './shared/status-form/status-form.component'
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/projects/0/details', pathMatch: 'full'},
-  {path: 'projects', children :[
-    {path: 'add', component: ProjectFormComponent}, 
-    {path: ':id', children: [
-      {path: 'details', children: [
-        {path: '', component: DetailsComponent, pathMatch: 'full'},
-        {path: 'edit', component: ProjectFormComponent}
-      ]},
-      {path: 'resources', children: [
-        {path: '', component: ResourcesComponent, pathMatch: 'full'},
-        {path: 'add', component: ResourceFormComponent},
-        {path: 'edit', component: ResourceFormComponent},
-        {path: 'delete', component: ResourcesComponent}
-      ]},
-      {path: 'invoice', component: InvoiceComponent},
-      {path: 'status', children: [
-        {path: '', component: StatusComponent, pathMatch: 'full'},
-        {path: 'add', component: StatusFormComponent}
-      ]}
-    ]},
-  ]}
+  { path: '', redirectTo: '/projects/0/details', pathMatch: 'full' },
+  {
+    path: 'projects', children: [
+      { path: 'add', component: ProjectFormComponent },
+      {
+        path: ':id', children: [
+          {
+            path: 'details', children: [
+              { path: '', component: DetailsComponent, pathMatch: 'full' },
+              { path: 'edit', component: ProjectFormComponent }
+            ]
+          },
+          {
+            path: 'resources', children: [
+              { path: '', component: ResourcesComponent, pathMatch: 'full' },
+              { path: 'add', component: ResourceFormComponent },
+              { path: 'edit/:id', component: ResourceFormComponent },
+              { path: 'delete', component: ResourcesComponent }
+            ]
+          },
+          { path: 'invoice', component: InvoiceComponent },
+          {
+            path: 'status', children: [
+              { path: '', component: StatusComponent, pathMatch: 'full' },
+              { path: 'add', component: StatusFormComponent }
+            ]
+          }
+        ]
+      },
+    ]
+  }
 ];
 
 @NgModule({

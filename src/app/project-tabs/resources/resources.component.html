@@ -17,13 +17,20 @@
 
     <!-- Dynamically populate table body -->
     <tbody>
-      <tr *ngFor="let resources of selectedProjectResources">
-        <td>{{ resources.resourceName }}</td>
-        <td>{{ resources.resourceEmail }}</td>
-        <td>{{ resources.role }}</td>
-        <td>{{ resources.billable }}</td>
-        <td>{{ resources.billableAmount }}</td>
-        <td (click)="editResource()" style="cursor: pointer" class="icons">
+      <tr
+        *ngFor="let resource of selectedProjectResources"
+        [id]="resource.resourceId"
+      >
+        <td>{{ resource.resourceName }}</td>
+        <td>{{ resource.resourceEmail }}</td>
+        <td>{{ resource.role }}</td>
+        <td>{{ resource.billable }}</td>
+        <td>{{ resource.billableAmount }}</td>
+        <td
+          (click)="editResource(resource.resourceId)"
+          style="cursor: pointer"
+          class="icons"
+        >
           <img
             src="../assets/images/edit-icon.PNG"
             alt=""
@@ -31,7 +38,11 @@
             class="img-responsive edit-icon"
           />
         </td>
-        <td (click)="deleteResource()" style="cursor: pointer" class="icons">
+        <td
+          (click)="deleteResource(resource.resourceId)"
+          style="cursor: pointer"
+          class="icons"
+        >
           <img
             src="../assets/images/delete-icon.PNG"
             alt=""

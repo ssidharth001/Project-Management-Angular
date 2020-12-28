@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormServiceService } from '../services/form-service.service';
 import { ProjectApiService } from '../services/project-api.service';
 import { ResourcesModel } from '../services/resources-model.model';
@@ -19,7 +19,7 @@ export class ResourceFormComponent implements OnInit {
   resourceList: ResourcesModel[];
   projectIndex: number;
 
-  constructor(private router: Router, private formService: FormServiceService, private projectApi: ProjectApiService) { }
+  constructor(private router: Router, private formService: FormServiceService, private projectApi: ProjectApiService, private route: ActivatedRoute) { }
 
   resourceForm: FormGroup;
 
@@ -53,22 +53,54 @@ export class ResourceFormComponent implements OnInit {
         // this.resourceDetails = JSON.parse(JSON.stringify(data))[this.router.url.split('/')[2]];
       });
 
+    if (String(this.router.url).toLocaleLowerCase().includes('edit')) {
+      this.buttonText = 'Update Resource';
+
+      this.projectApi.fetchResources().subscribe(
+        data => {
+          const selectedResource = JSON.parse(this.router.url.split('/')[5]);
+          this.resourceDetails = JSON.parse(JSON.stringify(data)).filter(resource => resource.resourceId == selectedResource)[0];
+          this.resourceForm.setValue({
+            'resourceName': this.resourceDetails.resourceName,
+            'resourceEmail': this.resourceDetails.resourceEmail,
+            'role': this.resourceDetails.role,
+            'billable': this.resourceDetails.billable,
+            'billableAmount': this.resourceDetails.billableAmount
+          });
+        });
+    }
+    else {
+      this.buttonText = 'Create Project';
+    }
+
   }
 
   cancelResource() {
     this.formService.isFormStatus.next(0);
-    this.router.navigate(['../resources']);
+    if (String(this.router.url).toLocaleLowerCase().includes('edit')) {
+      this.router.navigate(['../../'], { relativeTo: this.route });
+    }
+    else {
+      this.router.navigate(['../'], { relativeTo: this.route });
+    }
+
   }
 
   onSubmit() {
-    console.log(this.projectIndex)
+    const selectedResource = JSON.parse(this.router.url.split('/')[5]);
     if (this.buttonText == 'Add Resource') {
       const resourceData = Object.assign({}, this.resourceForm.value, { 'resourceId': this.resourceList.length }, { 'projectId': JSON.parse(this.router.url.split('/')[2]) });
       console.log(resourceData);
-      this.projectApi.storeResourceData(resourceData)
+      this.projectApi.storeResourceData(resourceData);
+      this.router.navigate(['../../'], { relativeTo: this.route });
     }
-
-    // this.resourceForm.reset();
+    else {
+      this.resourceList[selectedResource] = Object.assign({}, this.resourceForm.value, { 'resourceId': selectedResource }, { 'projectId': JSON.parse(this.router.url.split('/')[2]) });
+      console.log(this.resourceList)
+      this.projectApi.updateResourceData(this.resourceList);
+      this.router.navigate(['../../'], { relativeTo: this.route });
+    }
+    this.resourceForm.reset();
   }
 
 }

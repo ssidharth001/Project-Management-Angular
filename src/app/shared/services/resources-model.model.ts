@@ -3,7 +3,7 @@ export class ResourcesModel {
         public projectId: number,
         public resourceId: number,
         public resourceName: string,
-        public email: string,
+        public resourceEmail: string,
         public role: string,
         public billable: boolean,
         public billableAmount: number,
