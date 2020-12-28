@@ -61,10 +61,11 @@ export class ResourceFormComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.projectIndex)
     if (this.buttonText == 'Add Resource') {
-      const resourceData = Object.assign({}, this.resourceForm.value, { 'resourceId': this.resourceList.length }, { 'projectId': this.projectIndex });
+      const resourceData = Object.assign({}, this.resourceForm.value, { 'resourceId': this.resourceList.length }, { 'projectId': JSON.parse(this.router.url.split('/')[2]) });
       console.log(resourceData);
-      // this.projectApi.storeResourceData(resourceData)
+      this.projectApi.storeResourceData(resourceData)
     }
 
     // this.resourceForm.reset();
