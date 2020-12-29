@@ -2,8 +2,10 @@
     "cSpell.ignoreWords": [
         "actvitytype",
         "jsonparse",
+        "minlength",
         "rateperhour",
         "resourceform",
+        "signup",
         "statusform"
     ]
 }

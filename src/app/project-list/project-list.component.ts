@@ -38,6 +38,9 @@ export class ProjectListComponent implements OnInit, OnDestroy {
     this.projectApi.reloadComponent.subscribe(
       response => response === 1 ? this.ngOnInit() : 0
     )
+    this.projectApi.reloadProjectList.subscribe(
+      response => response === 1 ? this.ngOnInit() : 0
+    )
   }
 
   loadProjectForm() {

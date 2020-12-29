@@ -14,6 +14,7 @@ import { ProjectFormComponent } from './shared/project-form/project-form.compone
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatusFormComponent } from './shared/status-form/status-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusComponent,
     ResourceFormComponent,
     ProjectFormComponent,
-    StatusFormComponent
+    StatusFormComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

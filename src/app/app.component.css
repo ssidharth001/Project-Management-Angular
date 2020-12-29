@@ -1,6 +1,11 @@
-html, 
-body
-{font-family: "Manrope-Medium", Arial, Helvetica; color: #464648; font-weight: 300; font-size: 16px; text-rendering: optimizeLegibility;}
+html,
+body {
+  font-family: "Manrope-Medium", Arial, Helvetica;
+  color: #464648;
+  font-weight: 300;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+}
 
 input[type="date"],
 input[type="text"],
@@ -10,185 +15,206 @@ input[type="email"],
 input[type="checkbox"],
 textarea,
 select {
-    font-family: "Manrope-Medium", Arial, Helvetica; color: #464648; font-weight: 300; font-size: 14px !important; text-rendering: optimizeLegibility;
+  font-family: "Manrope-Medium", Arial, Helvetica;
+  color: #464648;
+  font-weight: 300;
+  font-size: 14px !important;
+  text-rendering: optimizeLegibility;
 }
 
 .wrapper {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .mr-0 {
-    margin-right: 0px !important;
+  margin-right: 0px !important;
 }
 
 .mt-0 {
-    margin-top: 0px !important;
+  margin-top: 0px !important;
 }
 
 .bg-primary {
-    background-color:#fff !important;
+  background-color: #fff !important;
 }
 
 .bg-success {
-    background-color:#49d8a0 !important;
+  background-color: #49d8a0 !important;
 }
 
 .bg-body {
-    background-color:rgb(246, 247, 251) !important;
+  background-color: rgb(246, 247, 251) !important;
 }
 
 h1 {
-    font-size: 150%;
+  font-size: 150%;
 }
 
 .nav-link {
-    color: #000000;
+  color: #000000;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: #fff;
-    background-color: #49d8a0 !important;
-    box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #49d8a0 !important;
+  box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
 }
 
 .tab-height {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .edit-icon:hover {
-    transform: scale(1.15);
-    transition: all ease 0.5s;
+  transform: scale(1.15);
+  transition: all ease 0.5s;
 }
 
 .border-success {
-    border-color: #49d8a0 !important;
+  border-color: #49d8a0 !important;
 }
 
-.table td, .table th {
-    border: 1px solid #dee2e6 !important;
+.table td,
+.table th {
+  border: 1px solid #dee2e6 !important;
 }
 
 th {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .btn-primary {
-    background-color:#49d8a0 !important;
-    border-color: #49d8a0;
+  background-color: #49d8a0 !important;
+  border-color: #49d8a0;
 }
 
 .btn-secondary {
-    color: #000000;
-    background-color: #fff !important;
-    border-color: #d84981 !important;
-    transition: all 0.2s ease;
+  color: #000000;
+  background-color: #fff !important;
+  border-color: #d84981 !important;
+  transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-    color: #fff;
-    background-color: #d84981 !important;
-    box-shadow: 0 0 10px #00000050;
+  color: #fff;
+  background-color: #d84981 !important;
+  box-shadow: 0 0 10px #00000050;
 }
 
 .btn-secondary:focus {
-    color: #000000;
+  color: #000000;
 }
 
 .btn-secondary:focus,
 .btn-primary:focus {
-    outline: transparent !important;
-    border: transparent !important;
+  outline: transparent !important;
+  border: transparent !important;
 }
 
 .btn-primary:hover {
-    border-color: transparent !important;
-    box-shadow: 0 0 10px #00000050;
+  border-color: transparent !important;
+  box-shadow: 0 0 10px #00000050;
 }
 
 .w-40 {
-    width: 40% !important;
+  width: 40% !important;
 }
 
 .project-form {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    padding-top: 50px;
-    background-color: #00000085;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding-top: 50px;
+  background-color: #00000085;
 }
 
 .project-form form {
-    max-width: 35%;
-    background-color: #fff;
-    margin: 0 auto;
+  max-width: 35%;
+  background-color: #fff;
+  margin: 0 auto;
 }
+
+/* .auth-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding-top: 50px;
+  background-color: #00000085;
+}
+
+.auth-form form {
+  max-width: 35%;
+  background-color: #fff;
+  margin: 0 auto;
+} */
 
 .btn {
-    padding: .175rem .55rem;
-    font-size: 1rem;
+  padding: 0.175rem 0.55rem;
+  font-size: 1rem;
 }
 
 @font-face {
-    font-family: 'Manrope-ExtraBold';
-    src: url('../assets/fonts/Manrope-ExtraBold.woff2') format('woff2'),
-        url('../assets/fonts/Manrope-ExtraBold.woff') format('woff');
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Manrope-ExtraBold";
+  src: url("../assets/fonts/Manrope-ExtraBold.woff2") format("woff2"),
+    url("../assets/fonts/Manrope-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Manrope-ExtraLight';
-    src: url('../assets/fonts/Manrope-ExtraLight.woff2') format('woff2'),
-        url('../assets/fonts/Manrope-ExtraLight.woff') format('woff');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Manrope-ExtraLight";
+  src: url("../assets/fonts/Manrope-ExtraLight.woff2") format("woff2"),
+    url("../assets/fonts/Manrope-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Manrope-Light';
-    src: url('../assets/fonts/Manrope-Light.woff2') format('woff2'),
-        url('../assets/fonts/Manrope-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Manrope-Light";
+  src: url("../assets/fonts/Manrope-Light.woff2") format("woff2"),
+    url("../assets/fonts/Manrope-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Manrope-Bold';
-    src: url('../assets/fonts/Manrope-Bold.woff2') format('woff2'),
-        url('../assets/fonts/Manrope-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Manrope-Bold";
+  src: url("../assets/fonts/Manrope-Bold.woff2") format("woff2"),
+    url("../assets/fonts/Manrope-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Manrope-Regular';
-    src: url('../assets/fonts/Manrope-Regular.woff2') format('woff2'),
-        url('../assets/fonts/Manrope-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Manrope-Regular";
+  src: url("../assets/fonts/Manrope-Regular.woff2") format("woff2"),
+    url("../assets/fonts/Manrope-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Manrope-SemiBold';
-    src: url('../assets/fonts/Manrope-SemiBold.woff2') format('woff2'),
-        url('../assets/fonts/Manrope-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Manrope-SemiBold";
+  src: url("../assets/fonts/Manrope-SemiBold.woff2") format("woff2"),
+    url("../assets/fonts/Manrope-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Manrope-Medium';
-    src: url('../assets/fonts/Manrope-Medium.woff2') format('woff2'),
-        url('../assets/fonts/Manrope-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Manrope-Medium";
+  src: url("../assets/fonts/Manrope-Medium.woff2") format("woff2"),
+    url("../assets/fonts/Manrope-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }

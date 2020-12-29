@@ -7,10 +7,12 @@ import { StatusComponent } from './project-tabs/status/status.component';
 import { ProjectFormComponent } from './shared/project-form/project-form.component';
 import { ResourceFormComponent } from './shared/resource-form/resource-form.component';
 import { StatusFormComponent } from './shared/status-form/status-form.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/projects/0/details', pathMatch: 'full' },
+  { path: 'auth', component: AuthComponent },
   {
     path: 'projects', children: [
       { path: 'add', component: ProjectFormComponent },
